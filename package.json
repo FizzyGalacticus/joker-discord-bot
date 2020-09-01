@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node  server.js",
     "lint": "eslint --fix .",
-    "test": "mocha tests/unit/**/*.js"
+    "test": "mocha tests/unit/**/*.js",
+    "ci": "eslint . && npm run test"
   },
   "dependencies": {
     "@fizzygalacticus/colored-fancy-log": "^1.0.0",
