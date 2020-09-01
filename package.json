@@ -1,0 +1,27 @@
+{
+  "name": "joker-discord-bot",
+  "version": "1.0.0",
+  "description": "A discord bot for me",
+  "main": "index.js",
+  "repository": "https://github.com/FizzyGalacticus/joker-discord-bot",
+  "author": "Dustin L. Dodson",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node  server.js"
+  },
+  "dependencies": {
+    "convict": "^6.0.0"
+  },
+  "devDependencies": {
+    "@fizzygalacticus/colored-fancy-log": "^1.0.0",
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "node_modules/*"
+    ],
+    "env": {
+
+    }
+  }
+}
