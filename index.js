@@ -3,7 +3,7 @@
 const Discord = require('discord.js');
 const log = require('@fizzygalacticus/colored-fancy-log');
 
-const topicRouter = require('./topics');
+const eventHandlers = require('./lib/events');
 
 const config = require('./config');
 
@@ -34,7 +34,13 @@ const start = async () => {
         }
     });
 
-    client.on('message', (message) => topicRouter(message));
+    Object.entries(eventHandlers).forEach(([e, handler]) => {
+        try {
+            client.on(e, handler);
+        } catch (err) {
+            log.error(err);
+        }
+    });
 
     try {
         await client.login(config.get('credentials.token'));
