@@ -5,16 +5,41 @@ const log = require('@fizzygalacticus/colored-fancy-log');
 
 const config = require('./config');
 
-const client = new Discord.Client();
+const env = config.get('env');
 
-client.on('ready', () => log.log('Bonesaw is ready!'));
+const client = new Discord.Client({ fetchAllMembers: true, presence: { activity: { name: `with himself` } } });
 
-client.on('message', (message) => {
-    if (message.content === 'ping') {
-        message.reply('pong');
+const start = async () => {
+    client.on('ready', async () => {
+        if (config.get('startup.enabled')) {
+            const startupMessages = config.get('startup.messages');
+            const startMsg = startupMessages[Math.floor(Math.random() * startupMessages.length)];
+
+            let channel;
+
+            if (env === 'prod') {
+                channel = await client.channels.fetch(config.get('channels.general'), true);
+            } else {
+                const user = await client.users.fetch(config.get('channels.general'), true);
+
+                channel = await user.createDM();
+            }
+
+            channel.send(startMsg);
+        }
+    });
+
+    client.on('message', (message) => {
+        if (message.content === 'ping') {
+            message.reply('pong');
+        }
+    });
+
+    try {
+        await client.login(config.get('credentials.token'));
+    } catch (err) {
+        log.error(err);
     }
+};
 
-    log.log('Received message:', message);
-});
-
-client.login(config.get('credentials.token')).catch((e) => log.error(e));
+start();
