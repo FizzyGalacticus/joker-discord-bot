@@ -3,6 +3,8 @@
 const Discord = require('discord.js');
 const log = require('@fizzygalacticus/colored-fancy-log');
 
+const topicRouter = require('./topics');
+
 const config = require('./config');
 
 const env = config.get('env');
@@ -29,11 +31,7 @@ const start = async () => {
         }
     });
 
-    client.on('message', (message) => {
-        if (message.content === 'ping') {
-            message.reply('pong');
-        }
-    });
+    client.on('message', (message) => topicRouter(message));
 
     try {
         await client.login(config.get('credentials.token'));
