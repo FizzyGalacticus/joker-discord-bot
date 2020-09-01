@@ -9,9 +9,12 @@ const config = require('./config');
 
 const env = config.get('env');
 
-const client = new Discord.Client({ fetchAllMembers: true, presence: { activity: { name: `with himself` } } });
-
 const start = async () => {
+    const activities = config.get('startup.activities');
+    const activity = activities[Math.floor(Math.random() * activities.length)];
+
+    const client = new Discord.Client({ fetchAllMembers: true, presence: { activity: { name: activity } } });
+
     client.on('ready', async () => {
         if (config.get('startup.enabled')) {
             const startupMessages = config.get('startup.messages');

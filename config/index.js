@@ -61,6 +61,19 @@ const conf = convict({
             ],
             env: 'STARTUP_MESSAGES',
         },
+        activities: {
+            doc: 'Activity status messages',
+            format: 'Array',
+            default: [
+                `with myself`,
+                `with your mom`,
+                `Pornhub`,
+                `at his masturbation station`,
+                `mom's spaghetti`,
+                `with balls of steel`,
+            ],
+            env: 'STARTUP_MESSAGES',
+        },
     },
 });
 
