@@ -35,13 +35,6 @@ const conf = convict({
             arg: 't',
         },
     },
-    channels: {
-        general: {
-            format: 'String',
-            env: 'GENERAL_CHANNEL_ID',
-            default: null,
-        },
-    },
     startup: {
         enabled: {
             doc: 'Whether or not startup messages will display',

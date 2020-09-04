@@ -5,7 +5,7 @@ module.exports = {
         mocha: true,
     },
     parserOptions: {
-        ecmaVersion: 2018,
+        ecmaVersion: 2020,
         sourceType: 'module',
         ecmaFeatures: {
             impliedStrict: true,
@@ -81,6 +81,7 @@ module.exports = {
                 printWidth: 120,
                 tabWidth: 4,
                 trailingComma: 'es5',
+                arrowParens: 'avoid',
             },
         ],
     },
