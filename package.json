@@ -1,6 +1,6 @@
 {
   "name": "joker-discord-bot",
-  "description": "A discord bot for me",
+  "description": "A discord bot for me!",
   "version": "1.0.0",
   "engines": {
     "node": "14.x"
@@ -34,8 +34,5 @@
       "node_modules/*"
     ],
     "env": {}
-  },
-  "husky": {
-    "pre-commit": "npm run lint && npm run test"
   }
 }
