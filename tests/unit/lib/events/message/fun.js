@@ -18,7 +18,7 @@ describe('fun', () => {
     });
 
     describe('fizz', () => {
-        it(`should respond with 'bar'`, () => {
+        it(`should respond with 'buzz'`, () => {
             fizz.process(null, { reply: res => expect(res).to.equal('buzz') });
         });
     });
