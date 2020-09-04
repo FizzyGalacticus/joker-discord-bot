@@ -8,6 +8,7 @@ const eventHandlers = require('./lib/events');
 const config = require('./config');
 
 const start = async () => {
+    log.info('Starting...');
     const activities = config.get('startup.activities');
     const activity = activities[Math.floor(Math.random() * activities.length)];
 
