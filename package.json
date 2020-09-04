@@ -1,7 +1,10 @@
 {
   "name": "joker-discord-bot",
-  "version": "1.0.0",
   "description": "A discord bot for me",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "index.js",
   "repository": "https://github.com/FizzyGalacticus/joker-discord-bot",
   "author": "Dustin L. Dodson",

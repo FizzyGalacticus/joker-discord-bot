@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const requireAllInDir = (dir) => {
+const requireAllInDir = dir => {
     const all = fs.readdirSync(dir);
 
     return all.reduce((acc, reqPath) => {

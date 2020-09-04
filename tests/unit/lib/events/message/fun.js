@@ -2,16 +2,24 @@
 
 const { expect } = require('chai');
 
-const { ping } = require('../../../../../lib/events/message/fun');
+const { ping, foo, fizz } = require('../../../../../lib/events/message/fun');
 
 describe('fun', () => {
     describe('ping', () => {
-        it('should match regex', () => {
-            expect(ping.match.test('ping')).to.be.true;
-        });
-
         it(`should respond with 'pong'`, () => {
-            ping.process({ reply: (res) => expect(res).to.equal('pong') });
+            ping.process(null, { reply: res => expect(res).to.equal('pong') });
+        });
+    });
+
+    describe('foo', () => {
+        it(`should respond with 'bar'`, () => {
+            foo.process(null, { reply: res => expect(res).to.equal('bar') });
+        });
+    });
+
+    describe('fizz', () => {
+        it(`should respond with 'bar'`, () => {
+            fizz.process(null, { reply: res => expect(res).to.equal('buzz') });
         });
     });
 });

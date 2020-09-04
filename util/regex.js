@@ -8,8 +8,8 @@ const parseMatch = (regex, str) => {
     }
 
     return Object.keys(m)
-        .filter((k) => !isNaN(k))
-        .map((k) => m[k]);
+        .filter(k => !isNaN(k))
+        .map(k => m[k]);
 };
 
 module.exports = { parseMatch };
