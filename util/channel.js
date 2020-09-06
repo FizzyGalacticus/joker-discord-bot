@@ -1,28 +1,6 @@
 'use strict';
 
-const createFieldSearcher = (objKey, fieldKey) => (client, searchVal) => {
-    const cache = client[objKey]?.cache;
-
-    if (cache) {
-        for (const field of cache.values()) {
-            if (field[fieldKey] === searchVal) {
-                return field;
-            }
-        }
-    }
-};
-
-const createIdSearcher = objKey => (client, searchId) => {
-    const cache = client[objKey]?.cache;
-
-    if (cache) {
-        for (const [id, field] of cache) {
-            if (id === searchId) {
-                return field;
-            }
-        }
-    }
-};
+const { createFieldSearcher, createIdSearcher } = require('./map');
 
 const getChannelByName = createFieldSearcher('channels', 'name');
 
@@ -32,9 +10,11 @@ const getUserByUsername = createFieldSearcher('users', 'username');
 
 const getUserById = createIdSearcher('users');
 
-const getDMByUserId = (client, id) => getUserById(client, id).createDM();
+const getDMByUserId = (searchObj, id) => getUserById(searchObj, id).createDM();
 
-const getDMByUsername = (client, username) => getUserByUsername(client, username).createDM();
+const getDMByUsername = (searchObj, username) => getUserByUsername(searchObj, username).createDM();
+
+const getMemberByUserId = createIdSearcher('members');
 
 module.exports = {
     getChannelByName,
@@ -43,4 +23,5 @@ module.exports = {
     getUserById,
     getDMByUserId,
     getDMByUsername,
+    getMemberByUserId,
 };
