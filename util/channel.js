@@ -32,9 +32,15 @@ const getUserByUsername = createFieldSearcher('users', 'username');
 
 const getUserById = createIdSearcher('users');
 
+const getDMByUserId = (client, id) => getUserById(client, id).createDM();
+
+const getDMByUsername = (client, username) => getUserByUsername(client, username).createDM();
+
 module.exports = {
     getChannelByName,
     getChannelById,
     getUserByUsername,
     getUserById,
+    getDMByUserId,
+    getDMByUsername,
 };
