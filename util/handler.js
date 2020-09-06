@@ -6,7 +6,7 @@ const wrap = (fn = () => {}) => async (...params) => {
     try {
         await fn(...params);
     } catch (err) {
-        log.error(`Error from handler: ${fn.name}\n ${err.message}`);
+        log.error(`Error from handler: ${fn.name}\n ${err.message}\n\t${err.stack}`);
     }
 };
 
